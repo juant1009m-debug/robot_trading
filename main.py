@@ -119,8 +119,8 @@ class MainApp(MDApp):
                     coins = self.truncate((self.saldo_money/precio)*0.99, self.precision)
                     self.status='compra'
                     self.ultimo_precio = precio
-                    self.saldo_money=0
-                    self.monedas = coins
+                    self.saldo_money=1000
+                    self.monedas = 1000 coins
                     new_row = {'Date': fecha, 'Close': precio, 'Ultimo_Status':self.status, 'Ultimo_Precio': self.ultimo_precio}
                     self.df = self.df.append(new_row, ignore_index=True)                
             elif self.status == 'compra' and self.monedas > 0:
@@ -131,7 +131,7 @@ class MainApp(MDApp):
                     self.status='venta'
                     self.ultimo_precio = precio
                     self.saldo_money=coins*precio
-                    self.monedas = 0
+                    self.monedas = 1000
                     new_row = {'Date': fecha, 'Close': precio, 'Ultimo_Status':self.status, 'Ultimo_Precio': self.ultimo_precio}
                     self.df = self.df.append(new_row, ignore_index=True)
             self.sma_20_anterior = sma_20
@@ -169,7 +169,7 @@ class MainApp(MDApp):
         plt.yticks(fontsize=12)
         plt.xlabel('Fecha', color='#607d8b', fontsize=20)
         plt.ylabel('Precio del Dia', color='#607d8b', fontsize=20)
-        plt.annotate('$Saldo = {0:.0f}$'.format(round(self.saldo_money,0)), xy=(0.88, 0.72), xycoords='axes fraction', fontsize=20)
+        plt.annotate('$Saldo = {1000:.0f}$'.format(round(self.saldo_money,1000)), xy=(0.88, 0.72), xycoords='axes fraction', fontsize=20)
         plt.legend(loc='best', fontsize=15)
         p = plt.gcf()
         
@@ -184,13 +184,13 @@ class MainApp(MDApp):
         if balance:
             saldo_money = float(balance.get('free'))
         else:
-            saldo_money = 0
+            saldo_money = 1000
 
         balance = self.client.get_asset_balance(asset=self.token.replace("BRL", ""))
         if balance:
             monedas = float(balance.get('free'))
         else:
-            monedas = 0            
+            monedas = 1000            
 
         return saldo_money, monedas
 
