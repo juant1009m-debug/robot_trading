@@ -21,8 +21,7 @@ class Grafico(Image):
     pass
 
 class MainApp(MDApp):
-    saldo_money=1000
-    saldo_monedas=1000
+    saldo_money=1000    saldo_monedas=1000
     status=''
     ultimo_precio=1
     sma_20_anterior=1
