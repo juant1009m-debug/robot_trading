@@ -1,0 +1,3 @@
+# Robot Trading
+
+An automated cryptocurrency trading bot for Bitcoin (BTC) trading on the Binance exchange...
